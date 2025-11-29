@@ -25,11 +25,11 @@ logger.setLevel(logging.INFO)
 logger.handlers = [handler]
 
 # --- CONFIG ---
-PROJECT_ID = "data-management-2-457212"
+PROJECT_ID = "flightproject-479709"
 TOPIC_ID = "opensky-flight-topic"
 SUBSCRIPTION_ID = "opensky-flight-topic-sub"
-BUCKET_NAME = "opensky-raw-data-bucket"
-
+BUCKET_NAME = "flightproject-479709-opensky"
+GCS_PREFIX = "incoming-data/"
 # --- Initialize GCP Clients ---
 try:
     publisher = pubsub_v1.PublisherClient()
@@ -133,7 +133,9 @@ def main(request):
         # Step 3: Subscribe & save to GCS for 60s
         logger.info(f"🕓 Subscribing to {subscription_path}")
         future = subscriber.subscribe(subscription_path, callback=callback)
+        time.sleep(20)
         future.cancel()
+        logger.info("Subscription cancelled after 20 seconds")
 
         return ("ETL pipeline completed successfully", 200)
 

@@ -15,10 +15,10 @@ spark = SparkSession.builder \
     .getOrCreate()
  
 # Configs
-bucket_name = "opensky-raw-data-bucket"
+bucket_name = "flightproject-479709-opensky"
 gcs_prefix = "incoming-data/"
 gcs_path = f"gs://{bucket_name}/{gcs_prefix}*.json"
-project_id = "data-management-2-457212"
+project_id = "flightproject-479709"
 dataset = "opensky_data"
 flight_state_table = "flight_states_staging_new"
 flight_data_table = "flight_data_staging_new"
