@@ -30,6 +30,7 @@ TOPIC_ID = "opensky-flight-topic"
 SUBSCRIPTION_ID = "opensky-flight-topic-sub"
 BUCKET_NAME = "flightproject-479709-opensky"
 GCS_PREFIX = "incoming-data/"
+
 # --- Initialize GCP Clients ---
 try:
     publisher = pubsub_v1.PublisherClient()
